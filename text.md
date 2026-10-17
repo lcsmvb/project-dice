@@ -1,0 +1,1 @@
+Site du cahier des charges: https://lcsmvb.github.io/site-project-dice
