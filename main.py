@@ -1,7 +1,17 @@
 import random 
 from random import choices
+from collections import Counter
 
-## https://emilypython.wordpress.com/2018/03/14/lancons-des-des-avec-le-module-random-de-python/
+SCORES = {
+    "Pentagone": 100,
+    "Carré": 60,
+    "Full": 40,
+    "Quinte": 35,
+    "Brelan": 25,
+    "Double paire": 15,
+    "Paire": 8,
+    "Dé haut": 2,
+}
 
 def lancerUnDe(n):
     d = random.randint(1,n)
@@ -26,10 +36,10 @@ def relancerDes(listeDesDes, indices, nbFaces=6):
         listeDesDes[i] = lancerUnDe(nbFaces)  # on relance seulement ce dé
     return listeDesDes
 
- def somme_de_deux_dés() -> int:
-    #https://www.xoolive.org/python/structures/jeux_de_des
-    # on tire 2 dés, on fait la somme
-    return sum(choices(faces, k=2))
+def reconnaitreMain(listeDesDes):
+    compte = Counter(listeDesDes)                       # ex : [3,6,1,6,2] -> {6:2, 3:1, 1:1, 2:1}
+    occurrences = sorted(compte.values(), reverse=True)  # ex : [2, 1, 1, 1]
+    valeurs = sorted(set(listeDesDes))
 
 des = lancerDeDes(5, 6)
 print("Tes dés :", des)
