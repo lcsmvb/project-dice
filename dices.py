@@ -1,6 +1,8 @@
 import random 
 from random import choices
 
+## https://emilypython.wordpress.com/2018/03/14/lancons-des-des-avec-le-module-random-de-python/
+
 def lancerUnDe(n):
     d = random.randint(1,n)
     return d
@@ -19,9 +21,23 @@ def sommeDeDes(nbDes,nbFaces):
         S=S+d     #on ajoute ce dé à la somme
     return S
 
-faces = range(1, 7)  #  les 6 faces d'un dé
- 
- 
-def somme_de_deux_dés() -> int:
+def relancerDes(listeDesDes, indices, nbFaces=6):
+    for i in indices:
+        listeDesDes[i] = lancerUnDe(nbFaces)  # on relance seulement ce dé
+    return listeDesDes
+
+ def somme_de_deux_dés() -> int:
+    #https://www.xoolive.org/python/structures/jeux_de_des
     # on tire 2 dés, on fait la somme
     return sum(choices(faces, k=2))
+
+des = lancerDeDes(5, 6)
+print("Tes dés :", des)
+
+choix = input("Lesquels relancer ? (ex : 1 3 5, ou Entrée pour aucun) : ")
+
+if choix.strip():
+    indices = [int(n) - 1 for n in choix.split()]  # le joueur tape 1 à 5, la liste va de 0 à 4
+    des = relancerDes(des, indices)
+
+print("Nouveaux dés :", des)
