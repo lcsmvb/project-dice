@@ -8,10 +8,10 @@ def lancerUnDe(n):
  
 def lancerDeDes(nbDes, nbFaces):
     """Lance nbDes dés et renvoie la liste des valeurs."""
-    listeDesDes = []  # la liste des dés, pour l'instant vide
+    listeDesDes = []  
     for i in range(nbDes):
-        d = lancerUnDe(nbFaces)  # on lance un dé
-        listeDesDes.append(d)    # on ajoute ce dé à la liste
+        d = lancerUnDe(nbFaces)  
+        listeDesDes.append(d)    
     return listeDesDes
  
  
