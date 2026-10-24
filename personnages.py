@@ -1,9 +1,11 @@
 #Ici, nous créons nos personnages 
+from constantes import VALEUR_MAX_MORALE_PERSO
+from constantes import VALEUR_MAX_MORALE_GOD
 
 class Personnage():
-    def __init__(self, nom: str, morale: int):
+    def __init__(self, nom: str, morale_initiale: int):
         self.nom = nom 
-        self._morale = morale 
+        self.morale = morale_initiale  
 
     @property
     def morale(self):
@@ -11,24 +13,22 @@ class Personnage():
 
     @morale.setter
     def morale(self, valeur):
-        self._morale = max(0, min(1000, valeur))
+        self._morale = max(0, min(VALEUR_MAX_MORALE_PERSO, valeur))
 
-Protagoniste = Personnage("Protagoniste", 100)
 
 class Dieu(Personnage): 
     def __init__(self, nom, morale, force: int):
         super().__init__(nom, morale)
-        self._force = force 
-
-    @property
-    def force(self):
-        return self._force 
+        self.force = force 
     
-    @force.setter
-    def force(self, valeur):
-        self._force = max(0, min(1000, valeur))
+    @property
+    def morale(self):
+        return self._morale 
 
-Hermes = Dieu("Hermès", 100, 620)
+    @morale.setter
+    def morale(self, valeur):
+        self._morale = max(0, min(VALEUR_MAX_MORALE_GOD, valeur))
+
 
 
 
