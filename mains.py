@@ -3,13 +3,17 @@ from constantes import SCORES
 #Traitement des mains et du score
 
 def reconnaitreMain(listeDesDes):
-    """Renvoie le nom de la main (Paire, Brelan, Full...)."""
+    """Renvoie le nom de la main """
     compte = Counter(listeDesDes)                        # ex : [3,6,1,6,2] -> {6:2, 3:1, 1:1, 2:1}
     occurrences = sorted(compte.values(), reverse=True)  # ex : [2, 1, 1, 1]
-    valeurs = sorted(set(listeDesDes))
  
-    # une suite = 5 valeurs différentes qui se suivent
-    estSuite = len(valeurs) == 5 and valeurs[-1] - valeurs[0] == 4
+    """Vérifier si est nous avons une suite, 5 valeurs différentes qui se suivent"""
+    valeurs = sorted(set(listeDesDes)) # on trie et on renvoie le nb de chiffres uniques dans notre liste
+    estSuite = len(valeurs) == 5 and valeurs[-1] - valeurs[0] == 4 
+    #len(valeurs) == 5 vérifie si y'a pas de doublon, si on a 5, on a bel et bien 5 dés avec 5 chiffres différents
+    #valeurs[-1] - valeurs[0] == 4 vérifie si l'écart entre le plus grand dé et le plus petit est de 4 (ex: 5-1=4 ou 6-2=4)
+    #comme len(valeurs) elimine les doublons et l'écart est de 4, c'est bien une suite car le chemin est forcément des nombres consécutifs
+
  
     if occurrences[0] == 5:
         return "Yams"
