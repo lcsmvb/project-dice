@@ -1,7 +1,7 @@
 from constantes import NB_DES, NB_FACES
 from des import lancerDeDes, relancerDes
 from mains import calculerScore
-import pygame 
+import pygame
 
 pygame.init()
 
