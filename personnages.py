@@ -15,6 +15,9 @@ class Personnage():
     def morale(self, valeur):
         self._morale = max(0, min(VALEUR_MAX_MORALE_PERSO, valeur))
 
+    def est_vivant(self):
+        return self.morale > 0 
+
 
 class Dieu(Personnage): 
     def __init__(self, nom, morale, force: int):
@@ -28,6 +31,7 @@ class Dieu(Personnage):
     @morale.setter
     def morale(self, valeur):
         self._morale = max(0, min(VALEUR_MAX_MORALE_GOD, valeur))
+
 
 
 
