@@ -17,17 +17,7 @@ while run:
     screen.fill((0,0,0))
     
     pygame.draw.rect(screen, (255, 0, 0), player)
-
-    key = pygame.key.get_pressed()
-    if key[pygame.K_q] == True: #Gauche
-        player.move_ip(-1, 0)
-    elif key[pygame.K_d] == True: #Droite
-            player.move_ip(1, 0)
-    elif key[pygame.K_z] == True: #Haut 
-            player.move_ip(0, -1)
-    elif key[pygame.K_s] == True: #Bas
-                player.move_ip(0, 1)
-
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False 
