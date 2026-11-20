@@ -31,6 +31,10 @@ class Dieu(Personnage):
     @morale.setter
     def morale(self, valeur):
         self._morale = max(0, min(VALEUR_MAX_MORALE_GOD, valeur))
+    
+    def est_vivant(self):
+            return self.morale > 0 
+    
 
 
 
